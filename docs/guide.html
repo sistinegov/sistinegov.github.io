@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Title and icon. -->
+		<title>KEEP</title>
+		<link rel="icon" href="../assets/image/icon.png" type="image/png" />
+
+		<!-- Css. -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+		<link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+		<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+		<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+		<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+		<link id="pagestyle" href="../assets/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
+
+		<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+		<link rel="stylesheet" href="../assets/katex/katex.css" type="text/css" />
+
+		<!-- JavaScript. -->
+		<script type="text/javascript">
+			var _sf_startpt = (new Date()).getTime()
+		</script>
+		<script defer src="../assets/katex/katex.js" crossorigin="anonymous"></script>
+		<script defer src="../assets/katex/contrib/auto-render.js" onload="renderMathInElement(document.body);" crossorigin="anonymous"></script>
+
+		<!-- Messages. -->
+		<meta name="description" content="K盟门户网站">
+		<meta property="og:title" content="K盟|门户网站|首页">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://forscript.github.io/">
+		<meta property="og:image" content="https://forscript.github.io/assets/image/icon.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="300">
+		<meta property="og:image:height" content="300">
+		<meta property="og:image:alt" content="K盟">
+		<meta property="og:description" content="K盟门户网站">
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					delimiters: [{
+							left: '$$',
+							right: '$$',
+							display: true
+						},
+						{
+							left: '$',
+							right: '$',
+							display: false
+						}
+					],
+					throwOnError: false
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="body">
+			<div id="content">
+				<br />
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="#">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="#">Tools</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">SubbieCore</li>
+					</ol>
+				</nav>
+				<h1 align="left">$\rm SubbieCore$</h1>
+				<span class="badge bg-gradient-info">Info</span>
+				<span class="badge bg-gradient-success">Latest</span>
+				<hr />
+				<h3>1. 依赖项</h3>
+				<br />
+				<p>
+    				此条目包含$1$个可下载的文件。点击<a href="./lib/require.zip" style="text-decoration: underline;">此处</a>下载。
+    			</p>
+				<p>
+					在安装SubbieCore之前，您的电脑需要额外的依赖项准备。它们都已经包含在上方提供的文件中。请将它们下载并解压至您的电脑，您应当得到如下三份可执行文件：
+					<ul style="font-family: Georgia, serif">
+						<li>Anaconda$3$-$2022.05$-Windows-x$86$_$64$.exe</li>
+						<li>Git-$2.39.0.2$-$64$-bit.exe</li>
+						<li>python-$3.10.7$-amd$64$.exe</li>
+					</ul>
+				</p>
+				<p>
+					依次运行它们，按照提示完成安装。注意在安装Python时选择"Add Python to PATH"。
+				</p>
+				<p>
+					完成对以上$3$份软件的安装后，还需要额外配置Anaconda$3$的环境变量。在桌面右击"此电脑"，选择"属性"-"高级系统设置"-"环境变量"。如果缺少名为Path的用户变量，请通过"新建"创建；否则，将以下$5$个值添加到Path中(以安装在D:\Anaconda$3$为例)：
+					<ul style="font-family: Georgia, serif;">
+						<li>D:\Anaconda$3$</li>
+						<li>D:\Anaconda$3$\Scripts</li>
+						<li>D:\Anaconda$3$\Library\mingw-w$64$\bin</li>
+						<li>D:\Anaconda$3$\Library\usr\bin</li>
+						<li>D:\Anaconda$3$\Library\bin</li>
+					</ul>
+				</p>
+				<p>
+					最后，请对依赖环境进行检查。按下<kbd>Win</kbd>+<kbd>R</kbd>，打开"运行"界面，输入"cmd"并单击"确定"。在打开的命令行窗口中输入命令：
+				</p>
+				<p><code style="color: rgb(214, 51, 132);">conda create -n test python==3.10.6</code></p>
+				<p>回车。待上一条命令执行结束后，执行命令：</p>
+				<p><code style="color: rgb(214, 51, 132);">activate test</code></p>
+				<p>此后，命令行内提示符前应出现(test)字样，表示已经成功搭建虚拟环境。这时再执行命令：</p>
+				<p><code style="color: rgb(214, 51, 132);">python -V</code></p>
+				<p>如果控制台输出"Python $3.10.6$"，说明依赖项的配置是成功的。</p>
+				<br />
+				<hr />
+				<h3>2. CUDA配置</h3>
+				<br />
+				<p>
+					开始此步骤前，请确保您的电脑安装了独立显卡。在<a href="https://pytorch.org/get-started/locally/" style="text-decoration: underline;">此处</a>可以查看PyTorch推荐的CUDA版本，只有推荐版本的CUDA才是被允许的。PyTorch的官方网站会指导您安装合适的PyTorch。安装完成后，不要忘记将您的显卡驱动程序升级至适配推荐的CUDA的版本。显卡运营商如NVIDIA的官方网站上一般会提供显卡驱动程序和CUDA的版本对照。注意，低于$1050$ Ti或显存小于$4$G的显卡是不能支持SubbieCore运行的。
+				</p>
+				<br />
+				<hr />
+				<h3>3. 配置SubbieCore核心组件</h3>
+				<br />
+				<p>
+					此条目包含$1$个可下载的文件。点击<a href="./lib/main.zip" style="text-decoration: underline;">此处</a>下载。
+				</p>
+				<p>
+					按下<kbd>Win</kbd>+<kbd>R</kbd>，打开"运行"界面，输入"cmd"并单击"确定"。在打开的命令行窗口中输入命令：
+				</p>
+				<p><code style="color: rgb(214, 51, 132);">git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git</code></p>
+				<p>
+					回车，即得到一份克隆的目录(项目的根目录)。然后下载并解压上方提供的文件，将它们复制到上述克隆目录下models/Stable-diffusion文件夹中。回到项目的根目录，在根目录下运行命令：
+				</p>
+				<p><code style="color: rgb(214, 51, 132);">python -m pip install -r requirements.txt</code></p>
+				<p>运行完成后，SubbieCore就成功安装在了您的电脑中。</p>
+				<br />
+				<hr />
+				<h3>4. 启动SubbieCore</h3>
+				<br />
+				<p>
+					在项目的根目录下，按下<kbd>Win</kbd>+<kbd>R</kbd>，打开"运行"界面，输入"cmd"并单击"确定"。在打开的命令行窗口中输入命令：
+				</p>
+				<p><code style="color: rgb(214, 51, 132);">python launch.py</code></p>
+				<p>
+					运行成功后，控制台将会给出一个网址(通常是http://$127.0.0.1$:?/)。将此网址复制到浏览器中打开，即是SubbieCore的UI界面。
+				</p>
+				<p>注意首次运行可能耗费较长时间。</p>
+				<br />
+				<hr />
+				<br /> 本页面是K盟门户网站的内部页面。
+				<br /> Copyright 2023 Keep. All rights reserved.
+				<br />
+				<br />
+			</div>
+
+		</div>
+
+		<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+		<script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+		<script src="../assets/js/plugins/countup.min.js"></script>
+		<script src="../assets/js/plugins/parallax.min.js"></script>
+		<script src="../assets/js/soft-design-system.min.js?v=1.0.9" type="text/javascript"></script>
+
+	</body>
+
+</html>
